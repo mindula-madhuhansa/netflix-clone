@@ -1,9 +1,8 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import "./TitleCards.css";
-
-import { useEffect } from "react";
 
 const TitleCards = ({ title, category }) => {
   const cardsRef = useRef();
@@ -42,13 +41,13 @@ const TitleCards = ({ title, category }) => {
       <h2>{title || "Popular on Netflix"}</h2>
       <div className="card-list" ref={cardsRef}>
         {apiData.map((movie, index) => (
-          <div className="card" key={index}>
+          <Link to={`/player/${movie.id}`} className="card" key={index}>
             <img
               src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
               alt={movie.original_title}
             />
             <p>{movie.original_title}</p>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
