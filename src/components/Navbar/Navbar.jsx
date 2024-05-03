@@ -1,13 +1,12 @@
-import { useRef } from "react";
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 
 import "./Navbar.css";
-
 import logo from "../../assets/logo.png";
 import search_icon from "../../assets/search_icon.svg";
 import bell_icon from "../../assets/bell_icon.svg";
 import profile_img from "../../assets/profile_img.png";
 import caret_icon from "../../assets/caret_icon.svg";
+import { signout } from "../../firebase";
 
 const Navbar = () => {
   const navRef = useRef();
@@ -48,7 +47,7 @@ const Navbar = () => {
           <img src={profile_img} alt="Avatar" className="profile" />
           <img src={caret_icon} alt="Caret Down" />
           <div className="dropdown">
-            <p>Sign Out of Netflix</p>
+            <p onClick={() => signout()}>Sign Out of Netflix</p>
           </div>
         </div>
       </div>

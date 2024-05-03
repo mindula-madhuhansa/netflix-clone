@@ -54,8 +54,8 @@ const TitleCards = ({ title, category }) => {
 };
 
 TitleCards.propTypes = {
-  title: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  category: PropTypes.string,
 };
 
 export default TitleCards;

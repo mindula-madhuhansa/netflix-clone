@@ -6,9 +6,10 @@ import {
   signOut,
 } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { toast } from "react-toastify";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.FIREBASE_API_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "netflix-clone-91d14.firebaseapp.com",
   projectId: "netflix-clone-91d14",
   storageBucket: "netflix-clone-91d14.appspot.com",
@@ -31,8 +32,10 @@ const signup = async (name, email, password) => {
       email,
     });
   } catch (error) {
-    console.error(error.message);
-    alert(error);
+    toast.error(
+      error.code.split("/")[1].split("-").join(" ").charAt(0).toUpperCase() +
+        error.code.split("/")[1].split("-").join(" ").slice(1)
+    );
   }
 };
 
@@ -40,8 +43,10 @@ const signin = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-    console.error(error.message);
-    alert(error);
+    toast.error(
+      error.code.split("/")[1].split("-").join(" ").charAt(0).toUpperCase() +
+        error.code.split("/")[1].split("-").join(" ").slice(1)
+    );
   }
 };
 
