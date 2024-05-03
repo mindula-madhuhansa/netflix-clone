@@ -8,17 +8,17 @@ const TitleCards = ({ title, category }) => {
   const cardsRef = useRef();
   const [apiData, setApiData] = useState([]);
 
+  const handleWheel = (e) => {
+    e.preventDefault();
+    cardsRef.current.scrollLeft += e.deltaY;
+  };
+
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
       Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_KEY}`,
     },
-  };
-
-  const handleWheel = (e) => {
-    e.preventDefault();
-    cardsRef.current.scrollLeft += e.deltaY;
   };
 
   useEffect(() => {
